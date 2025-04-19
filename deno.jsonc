@@ -1,0 +1,22 @@
+{
+  "lock": false,
+  "tasks": {
+    "dev": "deno task _start --watch",
+    "_start": "deno run -A --unstable-ffi --unstable-kv ./main.ts",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "test": "deno test --allow-net --allow-env"
+  },
+  "imports": {
+    "hono/": "https://deno.land/x/hono@v4.2.6/",
+    "hono/bearer-auth": "https://deno.land/x/hono@v4.2.6/middleware/bearer-auth/index.ts",
+    "hono/secure-headers": "https://deno.land/x/hono@v4.2.6/middleware/secure-headers/index.ts",
+    "hono/cors": "https://deno.land/x/hono@v4.2.6/middleware/cors/index.ts",
+    "npm:zod": "https://esm.sh/zod@4",
+    "neverthrow": "https://esm.sh/neverthrow@6",
+    "@std/log": "https://deno.land/std@0.224.0/log/mod.ts",
+    "@std/async/retry": "https://deno.land/std@0.224.0/async/retry.ts",
+    "jsr:@aws-sdk/client-sesv2": "npm:@aws-sdk/client-sesv2@3.556.0"
+  },
+  "fmt": { "lineWidth": 80, "semi": true, "singleQuote": true }
+}
