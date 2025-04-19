@@ -27,5 +27,5 @@
     "config": "./config.ts",
     "env": "./env.ts"
   },
-  "fmt": { "lineWidth": 80, "semi": true, "singleQuote": true }
+  "fmt": { "lineWidth": 80, "semiColons": true, "singleQuote": true }
 }
