@@ -1,7 +1,7 @@
-import { Hono } from 'hono'; // Use standard Hono
-import { z } from 'npm:zod';
-import { sendEmail } from '../../services/alert-service.ts';
-import { getChildLogger } from '../../utils/log.ts';
+import { Hono } from '@hono/hono';
+import { z } from 'zod';
+import { sendEmail } from '@/services/alert-service.ts';
+import { getChildLogger } from '@/utils/log.ts';
 
 const logger = getChildLogger('alert-routes');
 const alertRouter = new Hono();

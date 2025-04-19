@@ -1,7 +1,7 @@
-import { bearerAuth } from 'hono/bearer-auth';
-import { secureHeaders } from 'hono/secure-headers';
-import type { Context, Next } from 'hono';
-import { cfg } from '../config.ts';
+import { bearerAuth } from '@hono/hono/bearer-auth';
+import { secureHeaders } from '@hono/hono/secure-headers';
+import type { Context, Next } from '@hono/hono';
+import { cfg } from 'config';
 
 export const createAuthMiddleware = () => {
   const auth = bearerAuth({ token: cfg.apiToken });

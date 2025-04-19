@@ -1,4 +1,4 @@
-import { env } from './env.ts';
+import { env } from 'env';
 
 // Determine isProd/isDev first
 const isProd = !!Deno.env.get('DENO_DEPLOYMENT_ID');

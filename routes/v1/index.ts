@@ -1,5 +1,5 @@
-import { Hono } from 'hono'; // Use standard Hono
-import alertRouter from './alert-routes.ts';
+import { Hono } from '@hono/hono';
+import alertRouter from '@/routes/v1/alert-routes.ts'; // Use alias for consistency
 
 const v1Router = new Hono();
 

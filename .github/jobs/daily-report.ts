@@ -1,5 +1,5 @@
-import { cfg } from '../config.ts';
-import { getChildLogger } from '../utils/log.ts';
+import { cfg } from 'config';
+import { getChildLogger } from '@/utils/log.ts';
 
 const logger = getChildLogger('daily-report');
 

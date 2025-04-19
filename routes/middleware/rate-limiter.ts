@@ -1,5 +1,5 @@
-import { Context, Next } from 'hono';
-import { getChildLogger } from '../utils/log.ts';
+import type { Context, Next } from '@hono/hono'; // Use type import if only types are needed
+import { getChildLogger } from '@/utils/log.ts';
 
 const logger = getChildLogger('rate-limiter');
 

@@ -1,4 +1,4 @@
-import { z } from 'npm:zod';
+import { z } from 'zod';
 
 const toggle = z.enum(['true', 'false', '1', '0']).transform((v) =>
   v === 'true' || v === '1'
@@ -13,9 +13,8 @@ export const env = z
     AWS_SES_REGION: z.string().default('us-east-1'),
     UPSTASH_REDIS_REST_URL: z.string().optional(),
     UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
-    DISABLE_CRON: toggle.default('false'),
+    DISABLE_CRON: toggle.default('false')
   })
-  .strict()
   .parse(Deno.env.toObject());
 
 export type Env = typeof env;

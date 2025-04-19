@@ -1,5 +1,5 @@
 import * as log from '@std/log';
-import { cfg } from '../config.ts';
+import { cfg } from 'config';
 
 export async function setupLogger() {
   await log.setup({

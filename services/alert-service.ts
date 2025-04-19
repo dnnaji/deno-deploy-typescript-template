@@ -1,6 +1,6 @@
 import { ResultAsync } from 'neverthrow';
-import { sendEmailRaw } from '../connectors/aws-ses-connector.ts';
-import { z } from 'npm:zod';
+import { sendEmailRaw } from '@/connectors/aws-ses-connector.ts';
+import { z } from 'zod';
 
 const emailOptsSchema = z.object({
   to: z.string().email(),

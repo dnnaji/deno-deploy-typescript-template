@@ -1,6 +1,6 @@
-import { Context } from 'hono';
-import { getChildLogger } from '../utils/log.ts';
-import { AppError } from '../types/errors.ts';
+import type { Context } from '@hono/hono'; // Use type import if only types are needed
+import { getChildLogger } from '@/utils/log.ts';
+import { AppError } from '@/types/errors.ts';
 
 const logger = getChildLogger('error-handler');
 

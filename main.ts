@@ -1,12 +1,12 @@
-import { Hono } from 'hono';
-import { cors } from 'hono/cors';
-import v1Router from './routes/v1/index.ts';
-import { setupLogger, getChildLogger } from './utils/log.ts';
-import { createAuthMiddleware } from './middleware/auth.ts';
-import { globalErrorHandler } from './middleware/error-handler.ts';
-import { simpleRateLimiter } from './middleware/rate-limiter.ts';
-import { cfg } from './config.ts';
-import { scheduleDailyReport } from './jobs/daily-report.ts'; // Import scheduler
+import { Hono } from '@hono/hono';
+import { cors } from '@hono/hono/cors';
+import v1Router from '@/routes/v1/index.ts';
+import { setupLogger, getChildLogger } from '@/utils/log.ts';
+import { createAuthMiddleware } from '@/middleware/auth.ts';
+import { globalErrorHandler } from '@/middleware/error-handler.ts';
+import { simpleRateLimiter } from '@/middleware/rate-limiter.ts';
+import { cfg } from 'config';
+import { scheduleDailyReport } from '@/jobs/daily-report.ts'; // Import scheduler
 
 const logger = await setupLogger();
 const app = new Hono();

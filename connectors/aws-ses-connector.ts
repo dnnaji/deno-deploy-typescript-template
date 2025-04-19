@@ -1,8 +1,8 @@
 import { SESv2Client, SendEmailCommand } from 'jsr:@aws-sdk/client-sesv2';
 import { Result, err, ok } from 'neverthrow';
 import { retry } from '@std/async/retry';
-import { cfg } from '../config.ts';
-import { getChildLogger } from '../utils/log.ts';
+import { cfg } from 'config';
+import { getChildLogger } from '@/utils/log.ts';
 
 const logger = getChildLogger('aws-ses-connector');
 let sesClient: SESv2Client | null = null; // Lazy initialization
