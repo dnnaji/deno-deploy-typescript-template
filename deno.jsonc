@@ -25,7 +25,9 @@
     "@/middleware/": "./routes/middleware/",
     "@/specs/": "./specs/",
     "config": "./config.ts",
-    "env": "./env.ts"
+    "env": "./env.ts",
+    "npm:cron-parser": "https://esm.sh/cron-parser@4.9.0",
+    "@upstash/lock": "https://esm.sh/@upstash/lock@0.2.0"
   },
   "fmt": { "lineWidth": 80, "semiColons": true, "singleQuote": true }
 }

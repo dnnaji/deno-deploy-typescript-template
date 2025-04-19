@@ -6,7 +6,8 @@ import { createAuthMiddleware } from '@/middleware/auth.ts';
 import { globalErrorHandler } from '@/middleware/error-handler.ts';
 import { simpleRateLimiter } from '@/middleware/rate-limiter.ts';
 import { cfg } from 'config';
-import { scheduleDailyReport } from '@/jobs/daily-report.ts'; // Import scheduler
+import { scheduleDailyReport, runDailyReport } from '@/jobs/daily-report.ts'; // Import scheduler
+import jobTriggerRouter from '@/routes/jobs/trigger-routes.ts';
 
 const logger = await setupLogger();
 const app = new Hono();
@@ -54,12 +55,13 @@ app.use('*', createAuthMiddleware());
 
 // --- Routing ---
 app.route('/v1', v1Router);
+app.route('/jobs', jobTriggerRouter);
 
 // --- Error Handling ---
 app.onError(globalErrorHandler);
 
 // --- Schedule Jobs ---
-scheduleDailyReport(); // Schedule the job
+// scheduleDailyReport(); // Schedule the job
 
 // --- Server Start ---
 logger.info(

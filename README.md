@@ -14,7 +14,7 @@ A starter template for building serverless APIs on Deno Deploy using Hono.
 - **Middleware**: Includes Auth, CORS, Rate Limiting (basic), Secure Headers,
   Error Handling.
 - **Connectors**: Example AWS SES connector with retry logic.
-- **Jobs**: Example scheduled job setup using `Deno.cron`.
+- **Jobs**: Centralized scheduled job management using Redis and HTTP endpoints.
 - **CI/CD**: Basic GitHub Actions workflow for linting, testing, and deployment.
 
 ## Setup
