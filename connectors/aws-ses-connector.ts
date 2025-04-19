@@ -1,5 +1,5 @@
-import { SESv2Client, SendEmailCommand } from 'jsr:@aws-sdk/client-sesv2';
-import { Result, err, ok } from 'neverthrow';
+import { SendEmailCommand, SESv2Client } from 'jsr:@aws-sdk/client-sesv2';
+import { err, ok, Result } from 'neverthrow';
 import { retry } from '@std/async/retry';
 import { cfg } from 'config';
 import { getChildLogger } from '@/utils/log.ts';
@@ -22,13 +22,15 @@ function getSesClient() {
 }
 
 export async function sendEmailRaw(
-  params: SendEmailCommand['input']
+  params: SendEmailCommand['input'],
 ): Promise<Result<string, Error>> {
   const sendOperation = async () => {
     try {
       const client = getSesClient();
       logger.info(
-        `Attempting to send email to: ${params.Destination?.ToAddresses?.join(', ')}`
+        `Attempting to send email to: ${
+          params.Destination?.ToAddresses?.join(', ')
+        }`,
       );
       await client.send(new SendEmailCommand(params));
       logger.info('Email sent successfully via SES');

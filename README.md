@@ -11,31 +11,34 @@ A starter template for building serverless APIs on Deno Deploy using Hono.
 - **Neverthrow**: Robust error handling with Result types.
 - **Structured Logging**: JSON logs with correlation IDs via `@std/log`.
 - **API Versioning**: Routes organized under `/v1`.
-- **Middleware**: Includes Auth, CORS, Rate Limiting (basic), Secure Headers, Error Handling.
+- **Middleware**: Includes Auth, CORS, Rate Limiting (basic), Secure Headers,
+  Error Handling.
 - **Connectors**: Example AWS SES connector with retry logic.
 - **Jobs**: Example scheduled job setup using `Deno.cron`.
 - **CI/CD**: Basic GitHub Actions workflow for linting, testing, and deployment.
 
 ## Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repo-url>
-    cd deno-hono-template
-    ```
-2.  **Install Deno:** Follow instructions at [https://deno.land/manual/getting_started/installation](https://deno.land/manual/getting_started/installation)
-3.  **Environment Variables:**
-    - Create a `.env` file in the root directory for local development.
-    - Copy the keys from `env.ts` and provide values. Example:
-      ```env
-      PORT=8000
-      API_TOKEN="your-secret-api-token"
-      AWS_SES_ACCESS_KEY_ID="your-aws-key-id"
-      AWS_SES_SECRET_ACCESS_KEY="your-aws-secret-key"
-      # Optional: UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN
-      # Optional: DISABLE_CRON=true
-      ```
-    - **Important**: Do NOT commit `.env` to version control. Add it to `.gitignore`.
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd deno-hono-template
+   ```
+2. **Install Deno:** Follow instructions at
+   [https://deno.land/manual/getting_started/installation](https://deno.land/manual/getting_started/installation)
+3. **Environment Variables:**
+   - Create a `.env` file in the root directory for local development.
+   - Copy the keys from `env.ts` and provide values. Example:
+     ```env
+     PORT=8000
+     API_TOKEN="your-secret-api-token"
+     AWS_SES_ACCESS_KEY_ID="your-aws-key-id"
+     AWS_SES_SECRET_ACCESS_KEY="your-aws-secret-key"
+     # Optional: UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN
+     # Optional: DISABLE_CRON=true
+     ```
+   - **Important**: Do NOT commit `.env` to version control. Add it to
+     `.gitignore`.
 
 ## Development
 
@@ -62,12 +65,16 @@ A starter template for building serverless APIs on Deno Deploy using Hono.
 
 ## Deployment (Deno Deploy)
 
-1.  **Link Project:** Use `deployctl` or the Deno Deploy dashboard to link your GitHub repository to a Deno Deploy project.
-    ```bash
-    deployctl link --project=<your-deno-project-name>
-    ```
-2.  **Configure Environment Variables:** Add the required environment variables (from `env.ts`) to your Deno Deploy project settings.
-3.  **Push to `main` branch:** The GitHub Actions workflow in `.github/workflows/deploy.yml` will automatically build and deploy the application.
+1. **Link Project:** Use `deployctl` or the Deno Deploy dashboard to link your
+   GitHub repository to a Deno Deploy project.
+   ```bash
+   deployctl link --project=<your-deno-project-name>
+   ```
+2. **Configure Environment Variables:** Add the required environment variables
+   (from `env.ts`) to your Deno Deploy project settings.
+3. **Push to `main` branch:** The GitHub Actions workflow in
+   `.github/workflows/deploy.yml` will automatically build and deploy the
+   application.
 
 ## Project Structure
 

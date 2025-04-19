@@ -13,7 +13,7 @@ export const env = z
     AWS_SES_REGION: z.string().default('us-east-1'),
     UPSTASH_REDIS_REST_URL: z.string().optional(),
     UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
-    DISABLE_CRON: toggle.default('false')
+    DISABLE_CRON: toggle.default('false'),
   })
   .parse(Deno.env.toObject());
 

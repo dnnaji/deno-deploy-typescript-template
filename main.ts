@@ -1,7 +1,7 @@
 import { Hono } from '@hono/hono';
 import { cors } from '@hono/hono/cors';
 import v1Router from '@/routes/v1/index.ts';
-import { setupLogger, getChildLogger } from '@/utils/log.ts';
+import { getChildLogger, setupLogger } from '@/utils/log.ts';
 import { createAuthMiddleware } from '@/middleware/auth.ts';
 import { globalErrorHandler } from '@/middleware/error-handler.ts';
 import { simpleRateLimiter } from '@/middleware/rate-limiter.ts';
@@ -16,7 +16,11 @@ app.use('*', async (c, next) => {
   const correlationId = crypto.randomUUID();
   c.set('correlationId', correlationId);
   // Pass correlationId to logger context
-  (c as any).log = (level: 'info' | 'warn' | 'error' | 'debug', message: string, ...args: any[]) => {
+  (c as any).log = (
+    level: 'info' | 'warn' | 'error' | 'debug',
+    message: string,
+    ...args: any[]
+  ) => {
     const childLogger = getChildLogger('request-context');
     childLogger[level](message, correlationId, ...args);
   };
@@ -34,11 +38,13 @@ app.use(
     origin: cfg.isProd ? ['https://your-frontend.com'] : '*',
     allowMethods: ['GET', 'POST', 'OPTIONS'],
     allowHeaders: ['Authorization', 'Content-Type'],
-  })
+  }),
 );
 
 if (cfg.isProd) {
-  logger.warn('Using simple in-memory rate limiter in production - replace with distributed solution (Redis/KV)');
+  logger.warn(
+    'Using simple in-memory rate limiter in production - replace with distributed solution (Redis/KV)',
+  );
 }
 app.use('*', simpleRateLimiter);
 
@@ -56,5 +62,9 @@ app.onError(globalErrorHandler);
 scheduleDailyReport(); // Schedule the job
 
 // --- Server Start ---
-logger.info(`Server starting on port ${cfg.port} in ${cfg.isProd ? 'production' : 'development'} mode`);
+logger.info(
+  `Server starting on port ${cfg.port} in ${
+    cfg.isProd ? 'production' : 'development'
+  } mode`,
+);
 Deno.serve({ port: cfg.port }, app.fetch);

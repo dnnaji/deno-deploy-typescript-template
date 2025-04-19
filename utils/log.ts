@@ -17,7 +17,9 @@ export async function setupLogger() {
         },
       }),
     },
-    loggers: { default: { level: cfg.logLevel as log.LevelName, handlers: ['console'] } },
+    loggers: {
+      default: { level: cfg.logLevel as log.LevelName, handlers: ['console'] },
+    },
   });
   return log.getLogger();
 }

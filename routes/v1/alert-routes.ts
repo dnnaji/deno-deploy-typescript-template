@@ -30,7 +30,10 @@ alertRouter.post('/alert/email', async (c) => {
   const parsedBody = EmailRequestSchema.safeParse(body);
   if (!parsedBody.success) {
     logger.warn('Invalid request body schema', correlationId, parsedBody.error);
-    return c.json({ error: 'Invalid input', details: parsedBody.error.flatten() }, 400);
+    return c.json({
+      error: 'Invalid input',
+      details: parsedBody.error.flatten(),
+    }, 400);
   }
 
   const result = await sendEmail(parsedBody.data).match(
@@ -41,7 +44,7 @@ alertRouter.post('/alert/email', async (c) => {
     (error) => {
       logger.error('Failed to send email', correlationId, error);
       return { ok: false, error: error.message };
-    }
+    },
   );
 
   const status = result.ok ? 200 : 500; // Or map specific errors to 4xx/5xx

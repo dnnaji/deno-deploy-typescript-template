@@ -26,5 +26,5 @@ export const sendEmail = (opts: unknown) =>
         FromEmailAddress: 'noreply@yourapp.dev', // Use a verified SES sender
       })
     ),
-    (e) => new Error(`Validation or SES error: ${(e as Error).message}`)
+    (e) => new Error(`Validation or SES error: ${(e as Error).message}`),
   );
