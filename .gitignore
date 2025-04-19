@@ -1,0 +1,9 @@
+.env
+.env.*
+.DS_Store
+deno.lock
+coverage/
+.vscode/
+*.log
+node_modules/
+dist/
